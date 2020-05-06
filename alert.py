@@ -12,6 +12,20 @@ logger = logging.getLogger(__name__)
 # Initial Flask app
 app = Flask(__name__)
 
+# Zabbix on trk
+@app.route('/zabbix', methods=['POST'])
+def resend():
+    content = request.get_json()
+    logger.info(f"zabbix json == > {content}")
+    chat_id = content['chat_id']
+    message = content['text']
+    try:
+        import telegram
+        bot = telegram.Bot(token="828210247:AAFGvnijvBGVaWuR80S682d7cM6bDlt1qqc")
+        bot.sendMessage(chat_id=chat_id, text=message, parse_mode="Markdown")
+    except:
+        logger.error(f"zabbix error ==> {content}")
+        
 # Liviness test
 @app.route('/', methods=['GET'])
 def homepage():
