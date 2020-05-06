@@ -25,7 +25,8 @@ def resend():
         bot.sendMessage(chat_id=chat_id, text=message, parse_mode="Markdown")
     except:
         logger.error(f"zabbix error ==> {content}")
-        
+    return 'ok'
+
 # Liviness test
 @app.route('/', methods=['GET'])
 def homepage():
