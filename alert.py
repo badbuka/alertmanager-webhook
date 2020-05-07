@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import logging
 import sys
+import myenv
 
 from flask import Flask, request
 
@@ -21,7 +22,7 @@ def resend():
     message = content['text']
     try:
         import telegram
-        bot = telegram.Bot(token="828210247:AAFGvnijvBGVaWuR80S682d7cM6bDlt1qqc")
+        bot = telegram.Bot(token=myenv.token_bot)
         bot.sendMessage(chat_id=chat_id, text=message, parse_mode="Markdown")
     except:
         logger.error(f"zabbix error ==> {content}")
@@ -41,8 +42,8 @@ def alert():
     try:
         import telegram
         # Initial bot by Telegram access token
-        bot = telegram.Bot(token="828210247:AAFGvnijvBGVaWuR80S682d7cM6bDlt1qqc")
-        chat_id = "-1001332344815"
+        bot = telegram.Bot(token=myenv.token_bot)
+        chat_id = myenv.alert_chat_id
         from msg import alert_msg_handler
         for alert_json in content['alerts']:
             parse_msg = alert_msg_handler(alert_json)
