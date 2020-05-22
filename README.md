@@ -23,7 +23,7 @@ curl -H 'Content-Type: application/json' -XPOST -d '{ "chat_id": "-12345677899",
 ```
 git clone https://github.com/badbuka/alertmanager-webhook
 cd alertmanager-webhook
-heruko login -i
+heroku login -i
 heroku git:remote -a {heroku-project-name}
 git push heroku master
 ```
