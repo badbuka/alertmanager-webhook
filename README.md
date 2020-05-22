@@ -1,7 +1,7 @@
 # alertmanager-webhook
 Telegram bot for forwarding prometheus and zabbix alerts, or any costum messages.
 Refactored and ready for heroku.
-For prometheus alerts forwarding chat_id must be defined in myenv.py.
+For prometheus alerts forwarding bot_token and chat_id must be defined in myenv.py.
 ## Usage
 Configure alertmenager recievers:
 ```
