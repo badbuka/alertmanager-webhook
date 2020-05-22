@@ -13,11 +13,11 @@ logger = logging.getLogger(__name__)
 # Initial Flask app
 app = Flask(__name__)
 
-# Zabbix on trk
-@app.route('/zabbix', methods=['POST'])
+# costum webhook example json { chat_id:XXXXXX text:your text }
+@app.route('/webhook', methods=['POST'])
 def resend():
     content = request.get_json()
-    logger.info(f"zabbix json == > {content}")
+    logger.info(f"webhook json == > {content}")
     chat_id = content['chat_id']
     message = content['text']
     try:
@@ -25,7 +25,7 @@ def resend():
         bot = telegram.Bot(token=myenv.token_bot)
         bot.sendMessage(chat_id=chat_id, text=message, parse_mode="Markdown")
     except:
-        logger.error(f"zabbix error ==> {content}")
+        logger.error(f"webhook error ==> {content}")
     return 'ok'
 
 # Liviness test
