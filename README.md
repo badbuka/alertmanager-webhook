@@ -19,3 +19,11 @@ For sending any other messages to any chat send json with POST to https://your_b
 ```
 curl -H 'Content-Type: application/json' -XPOST -d '{ "chat_id": "-12345677899", "text": "sended by curl" }' https://your_bot.herokuapp.com
 ```
+## Deploy to Heroku
+```
+git clone https://github.com/badbuka/alertmanager-webhook
+cd alertmanager-webhook
+heruko login -i
+heroku git:remote -a {heroku-project-name}
+git push heroku master
+```
